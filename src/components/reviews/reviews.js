@@ -6,11 +6,11 @@ import ReviewForm from './review-form';
 import styles from './reviews.module.css';
 import reviews from '../../redux/reducer/reviews';
 
-const Reviews = ({ reviewIds }) => {
+const Reviews = ({ reviews }) => {
   return (
     <div className={styles.reviews}>
-      {reviews.map((review) => (
-        <Review key={review.id} {...review} />
+      {Object.values(reviews).map((reviewId) => (
+        <Review key={review.id} review={review} />
       ))}
       <ReviewForm />
     </div>
@@ -25,4 +25,4 @@ Reviews.propTypes = {
   ).isRequired,
 };
 
-export default connect((state) => ({ reviews: state.reviews }))(Reviews);
+export default Reviews;
